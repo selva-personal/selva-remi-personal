@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Noto Sans Tamil", "Inter", system-ui, sans-serif;
+  --font-accent: "Cormorant Garamond", Georgia, serif;
+  --color-romantic-50: #fdf2f8;
+  --color-romantic-100: #fce7f3;
+  --color-romantic-200: #fbcfe8;
+  --color-romantic-300: #f9a8d4;
+  --color-romantic-400: #f472b6;
+  --color-romantic-500: #ec4899;
+  --color-romantic-600: #db2777;
+  --color-romantic-700: #be185d;
+  --color-romantic-800: #9d174d;
+  --color-romantic-900: #831843;
+  --color-plum-400: #c084fc;
+  --color-plum-500: #a855f7;
+  --color-plum-600: #9333ea;
+  --color-plum-700: #7e22ce;
+  --color-plum-900: #581c87;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  background: #0a0612;
+  color: #f8f4ff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(236, 72, 153, 0.35);
+  color: #fff;
+}
+
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-strong {
+  background: linear-gradient(
+    145deg,
+    rgba(168, 85, 247, 0.15) 0%,
+    rgba(236, 72, 153, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glow-pink {
+  box-shadow:
+    0 0 40px rgba(236, 72, 153, 0.35),
+    0 0 80px rgba(168, 85, 247, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #fce7f3 0%, #f9a8d4 35%, #e9d5ff 70%, #fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fce7f3, #f472b6, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-padding {
+  @apply px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.font-display,
+.font-accent {
+  font-family: var(--font-body);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
