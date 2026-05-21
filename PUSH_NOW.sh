@@ -1,18 +1,27 @@
 #!/usr/bin/env bash
-# Run this in Terminal — logs in as selva-personal and pushes full project
+# Push to selva-personal/selva-remi-personal (uses real GitHub CLI, not npm "gh")
 set -euo pipefail
 
 cd "$(dirname "$0")"
 
-echo "Step 1: Login to GitHub as selva-personal"
-/usr/local/bin/gh auth login -h github.com -p https -w
+GH="/usr/local/bin/gh"
+if [[ ! -x "$GH" ]]; then
+  echo "Install GitHub CLI: brew install gh"
+  exit 1
+fi
 
-echo "Step 2: Use gh credentials for git"
-/usr/local/bin/gh auth setup-git
+# npm's broken "gh" package shadows the real CLI — use Homebrew gh only
+export PATH="/usr/local/bin:$(echo "$PATH" | tr ':' '\n' | grep -v 'node.*bin' | tr '\n' ':' | sed 's/:$//')"
 
-echo "Step 3: Push full project (replaces empty README on GitHub)"
-git push -u origin main --force
+echo "Step 1: Login to GitHub as selva-personal (browser will open)"
+"$GH" auth login -h github.com -p https -w
+
+echo "Step 2: Configure git to use GitHub CLI credentials"
+"$GH" auth setup-git
+
+echo "Step 3: Push project to GitHub"
+git push -u origin main
 
 echo ""
-echo "Done! Repo: https://github.com/selva-personal/selva-remi-personal"
+echo "Done! https://github.com/selva-personal/selva-remi-personal"
 echo "Next: Netlify → Import from Git → selva-remi-personal"

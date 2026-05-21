@@ -8,7 +8,9 @@
 ## 1. GitHub (one-time auth)
 
 ```bash
-/usr/local/bin/gh auth login
+# Use Homebrew gh — NOT npm's broken `gh` package (nvm shadows it)
+export PATH="/usr/local/bin:$PATH"
+gh auth login -h github.com -p https -w
 ```
 
 Choose: GitHub.com → HTTPS → Login with browser
